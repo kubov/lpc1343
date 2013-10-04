@@ -3,10 +3,10 @@ LIBS := -lCMSISv1p30_LPC13xx
 
 -include subdir.mk
 
-all: blinky.axf
+all: main
 
 # Tool invocations
-blinky.axf: $(OBJS) $(USER_OBJS)
+main: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
 	arm-none-eabi-gcc -nostdlib -L"/home/kubov/workspace/CMSISv1p30_LPC13xx/Debug" -Xlinker --gc-sections -Xlinker -Map=$(EXECUTABLE).map -mcpu=cortex-m3 -mthumb -T "linker/main.ld" -o"$(EXECUTABLE)" $(_OBJS) $(LIBS)
